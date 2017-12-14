@@ -6,22 +6,21 @@
 * Анализ полученных результатов​
 * Профилирование кода для поиска проблемы​
 * Устренение проблем и проверка результата​
-* Tideways span-API - профилируем в продакшене​
 * Научиться писать сценарии
 
 ## Требования
 
-* https://docs.docker.com/engine/installation/ - Docker
-* https://docs.docker.com/compose/install/ - Docker Compose
-* http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html JVM 8 (только для JMeter)
+* Docker https://docs.docker.com/engine/installation/ 
+* Docker Compose https://docs.docker.com/compose/install/
+* JVM 8 http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+* JMeter 3.1 https://archive.apache.org/dist/jmeter/binaries/
 
 ## Шаги
 
 1) запускаем докер
 ```docker-compose up```
 
-2) открываем сайт в браузере  
-```http://localhost:8085/```
+2) открываем сайт в браузере http://localhost:8085/
 
 3) запускаем генерацию  профайла
   ```docker-compose exec app php bin/magento setup:performance:generate-fixtures setup/performance-toolkit/profiles/ce/small.xml```
@@ -36,14 +35,11 @@
   ```
 
 5) включаем профилировщик
-   ```docker-compose exec magento enable_profiler.sh```
-   ```http://localhost:8088/```
+   ```docker-compose exec app enable_profiler.sh```
+
+   открываем http://localhost:8088/
 
 6) включаем tideways span-api
-   ```docker-compose exec magento enable_spans.sh```
-   ```http://localhost:8085/```
+   ```docker-compose exec app enable_spans.sh```
 
-Troubleshoots
-
-1) no mongo indexes
-docker-compose exec xhgui php /tmp/mongo.php
+   открываем http://localhost:8085/
