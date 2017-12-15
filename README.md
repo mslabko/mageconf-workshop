@@ -48,3 +48,12 @@
    ```docker-compose exec app enable_spans.sh```
 
    открываем http://localhost:8085/
+   
+   
+# Vagrantfile
+
+Используйте Vagrantfile **только для Windows** когда у вас **уже есть** установленный Vagrant и не получается установить Docker  
+Предустановка:
+* vagrant up
+* vagrant ssh
+* cd magento2
