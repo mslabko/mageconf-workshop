@@ -18,14 +18,19 @@
 ## Шаги
 
 1) запускаем докер
-```docker-compose up```
+```docker-compose up -d```
 
-2) открываем сайт в браузере http://localhost:8085/
+    1.1) для просмора логов запущенного контейнера: ```docker-compose logs```
 
-3) запускаем генерацию  профайла
+2) устаналиваем Magento 
+```docker-compose exec app install_magento.sh```
+
+3) открываем сайт в браузере http://localhost:8085/
+
+4) запускаем генерацию  профайла
   ```docker-compose exec app php bin/magento setup:performance:generate-fixtures setup/performance-toolkit/profiles/ce/small.xml```
 
-4) запускаем JMeter
+5) запускаем JMeter
   ```bash
     unzip -d steps/jmeter/ steps/jmeter/jmeter.zip
     # Mac/Linux:
@@ -34,12 +39,12 @@
         steps/jmeter/bin/jmeter.bat -t steps/jmeter/add_to_cart.jmx
   ```
 
-5) включаем профилировщик
+6) включаем профилировщик
    ```docker-compose exec app enable_profiler.sh```
 
    открываем http://localhost:8088/
 
-6) включаем tideways span-api
+7) включаем tideways span-api
    ```docker-compose exec app enable_spans.sh```
 
    открываем http://localhost:8085/

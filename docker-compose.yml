@@ -4,8 +4,6 @@ services:
     ports:
       - "8085:8085"
     image: mslabko/magento_performance_demo
-    command: /bin/sh -c "/start_services.sh"
-    working_dir: /var/www/html
   mongodb:
     image: mongo
     ports:
