@@ -44,6 +44,11 @@
 
    открываем http://localhost:8088/
 
+6.1) Исправляем проблему:
+  ```docker-compose exec app bash```
+  ```vim app/code/Magento/Checkout/Model/Cart.php```
+  Нажимаем ":" и ищем "проблемный" метод "/" + "n addProd" + Enter
+
 7) включаем tideways span-api
    ```docker-compose exec app enable_spans.sh```
 
